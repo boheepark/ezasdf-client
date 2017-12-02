@@ -1,6 +1,10 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 const Form = (props) => {
+    if (props.isAuthenticated) {
+        return <Redirect to='/' />;
+    }
     return (
         <div>
             <h1>{props.formType}</h1>
@@ -18,7 +22,7 @@ const Form = (props) => {
                     />
                 </div>
                 {
-                    props.formType === 'Register' &&
+                    props.formType === 'Signup' &&
                     <div className="form-group">
                         <input
                             name="email"
