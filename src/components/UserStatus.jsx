@@ -21,26 +21,25 @@ class UserStatus extends Component {
     }
 
     getUserStatus() {
-        const options = {
+        return axios({
             url: `${process.env.REACT_APP_USERS_SERVICE_URL}/auth/status`,
             method: 'get',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${window.localStorage.authToken}`
             }
-        };
-        return axios(options)
-            .then((res) => {
-                this.setState({
-                    created_at: res.data.data.created_at,
-                    email: res.data.data.email,
-                    id: res.data.data.id,
-                    username: res.data.data.username
-                })
+        })
+        .then((res) => {
+            this.setState({
+                created_at: res.data.data.created_at,
+                email: res.data.data.email,
+                id: res.data.data.id,
+                username: res.data.data.username
             })
-            .catch((error) => {
-                console.log(error);
-            })
+        })
+        .catch((error) => {
+            console.log(error);
+        })
     }
 
     render() {

@@ -43,11 +43,12 @@ class App extends Component {
 
     addUser(event) {
         event.preventDefault();
-        const data = {
-            username: this.state.username,
-            email: this.state.email
-        };
-        axios.post(`${process.env.REACT_APP_USERS_SERVICE_URL}/users`, data)
+        axios.post(
+            `${process.env.REACT_APP_USERS_SERVICE_URL}/users`,
+            {
+                username: this.state.username,
+                email: this.state.email
+            })
             .then((res) => {
                 this.getUsers();
                 this.setState({
@@ -89,8 +90,7 @@ class App extends Component {
                 password: this.state.formData.password
             }
         }
-        const url = `${process.env.REACT_APP_USERS_SERVICE_URL}/auth/${formType}`;
-        axios.post(url, data)
+        axios.post(`${process.env.REACT_APP_USERS_SERVICE_URL}/auth/${formType}`, data)
             .then((res) => {
                 this.setState({
                     formData: {
@@ -102,7 +102,7 @@ class App extends Component {
                     email: '',
                     isAuthenticated: true
                 });
-                window.localStorage.setItem('authToken', res.data.auth_token);
+                window.localStorage.setItem('authToken', res.data.data.auth_token);
                 this.getUsers();
             })
             .catch((err) => {
