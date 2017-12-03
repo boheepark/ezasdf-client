@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import React, {Component} from 'react'
+import {Route, Switch} from 'react-router-dom'
 import axios from 'axios'
 import UsersList from './components/UsersList'
-import AddUser from './components/AddUser'
 import About from './components/About'
 import NavBar from './components/NavBar'
 import Form from './components/Form'
@@ -34,8 +33,12 @@ class App extends Component {
 
     getUsers() {
         axios.get(`${process.env.REACT_APP_USERS_SERVICE_URL}/users`)
-            .then((res) => { this.setState({ users: res.data.data.users }); })
-            .catch((err) => { console.log(err); })
+            .then((res) => {
+                this.setState({users: res.data.data.users});
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     addUser(event) {
@@ -47,9 +50,14 @@ class App extends Component {
         axios.post(`${process.env.REACT_APP_USERS_SERVICE_URL}/users`, data)
             .then((res) => {
                 this.getUsers();
-                this.setState({ username: '', email: '' });
+                this.setState({
+                    username: '',
+                    email: ''
+                });
             })
-            .catch((err) => { console.log(err); })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     handleChange(event) {
@@ -97,12 +105,14 @@ class App extends Component {
                 window.localStorage.setItem('authToken', res.data.auth_token);
                 this.getUsers();
             })
-            .catch((err) => { console.log(err); })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     logoutUser() {
         window.localStorage.clear();
-        this.setState({ isAuthenticated: false });
+        this.setState({isAuthenticated: false});
     }
 
     render() {
@@ -118,20 +128,11 @@ class App extends Component {
                             <br/>
                             <Switch>
                                 <Route exact path='/' render={() => (
-                                    <div>
-                                        <h1>All Users</h1>
-                                        <hr/><br/>
-                                        <AddUser
-                                            username={this.state.username}
-                                            email={this.state.email}
-                                            handleChange={this.handleChange.bind(this)}
-                                            addUser={this.addUser.bind(this)}
-                                        />
-                                        <br/>
-                                        <UsersList users={this.state.users}/>
-                                    </div>
+                                    <UsersList
+                                        users={this.state.users}
+                                    />
                                 )} />
-                                <Route exact path='/about' component={About}/>
+                                <Route exact path='/about' component={About} />
                                 <Route exact path='/status' render={() => (
                                     <UserStatus
                                         isAuthenticated={this.state.isAuthenticated}
