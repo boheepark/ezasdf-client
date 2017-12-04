@@ -22,7 +22,7 @@ const Form = (props) => {
                     />
                 </div>
                 {
-                    props.formType === 'signup' &&
+                    props.formType === 'Sign Up' &&
                     <div className="form-group">
                         <input
                             name="email"

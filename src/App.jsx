@@ -5,7 +5,7 @@ import UsersList from './components/UsersList'
 import About from './components/About'
 import NavBar from './components/NavBar'
 import Form from './components/Form'
-import Logout from './components/Logout'
+import Signout from './components/Signout'
 import UserStatus from './components/UserStatus'
 
 
@@ -116,7 +116,7 @@ class App extends Component {
             })
     }
 
-    logoutUser() {
+    signoutUser() {
         window.localStorage.clear();
         this.setState({isAuthenticated: false});
     }
@@ -146,7 +146,7 @@ class App extends Component {
                                 )} />
                                 <Route exact path='/signup' render={() => (
                                     <Form
-                                        formType={ 'Signup' }
+                                        formType={ 'Sign Up' }
                                         formData={ this.state.formData }
                                         handleFormChange={ this.handleFormChange.bind(this) }
                                         handleUserFormSubmit={ this.handleUserFormSubmit.bind(this) }
@@ -155,16 +155,16 @@ class App extends Component {
                                 )} />
                                 <Route exact path='/signin' render={() => (
                                     <Form
-                                        formType={ 'Signin' }
+                                        formType={ 'Sign In' }
                                         formData={ this.state.formData }
                                         handleFormChange={ this.handleFormChange.bind(this) }
                                         handleUserFormSubmit={ this.handleUserFormSubmit.bind(this) }
                                         isAuthenticated={ this.state.isAuthenticated }
                                     />
                                 )} />
-                                <Route exact path='/logout' render={() => (
-                                    <Logout
-                                        logoutUser={ this.logoutUser.bind(this) }
+                                <Route exact path='/signout' render={() => (
+                                    <Signout
+                                        signoutUser={ this.signoutUser.bind(this) }
                                         isAuthenticated={ this.state.isAuthenticated }
                                     />
                                 )} />

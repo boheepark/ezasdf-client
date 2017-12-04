@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-class Logout extends Component {
+class Signout extends Component {
 
     componentDidMount() {
-        this.props.logoutUser();
+        this.props.signoutUser();
     }
 
     render() {
         return (
             <div>
-                <p>You are now logged out. Click <Link to="/signin">here</Link> to log back in.</p>
+                <p>You are now signed out. Click <Link to="/signin">here</Link> to sign back in.</p>
             </div>
         )
     }
 }
 
-export default Logout
+export default Signout
