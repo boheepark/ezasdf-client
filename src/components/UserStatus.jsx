@@ -44,7 +44,7 @@ class UserStatus extends Component {
 
     render() {
         if (!this.props.isAuthenticated) {
-            return <p>You must be logged in to view this page. Click <Link to="/signin">here</Link> to log back in.</p>
+            return <p>You must be signed in to view this page. Click <Link to="/signin">here</Link> to sign in.</p>
         }
         return (
             <div>
