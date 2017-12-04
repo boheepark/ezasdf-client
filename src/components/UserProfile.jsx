@@ -26,7 +26,7 @@ class UserStatus extends Component {
             method: 'get',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${window.localStorage.authToken}`
+                Authorization: `Bearer ${window.localStorage.token}`
             }
         })
         .then((res) => {

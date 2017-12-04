@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import axios from 'axios'
-import UsersList from './components/UsersList'
+import UserList from './components/UserList'
 import About from './components/About'
 import NavBar from './components/NavBar'
 import Form from './components/Form'
 import Signout from './components/Signout'
-import UserStatus from './components/UserStatus'
+import UserProfile from './components/UserProfile'
 
 
 class App extends Component {
@@ -28,7 +28,7 @@ class App extends Component {
     }
 
     componentWillMount() {
-        if (window.localStorage.getItem('authToken')) {
+        if (window.localStorage.getItem('token')) {
             this.setState({ isAuthenticated: true });
         }
     }
@@ -61,8 +61,7 @@ class App extends Component {
                     username: '',
                     email: ''
                 });
-            })
-            .catch((err) => {
+            }).catch((err) => {
                 console.log(err);
             })
     }
@@ -108,7 +107,7 @@ class App extends Component {
                     email: '',
                     isAuthenticated: true
                 });
-                window.localStorage.setItem('authToken', res.data.data.auth_token);
+                window.localStorage.setItem('token', res.data.data.token);
                 this.getUsers();
             })
             .catch((err) => {
@@ -125,7 +124,7 @@ class App extends Component {
         return (
             <div>
                 <NavBar
-                    title={this.state.title}
+                    title={ this.state.title }
                     isAuthenticated={ this.state.isAuthenticated }
                 />
                 <div className="container">
@@ -134,13 +133,13 @@ class App extends Component {
                             <br/>
                             <Switch>
                                 <Route exact path='/' render={() => (
-                                    <UsersList
+                                    <UserList
                                         users={ this.state.users }
                                     />
                                 )} />
                                 <Route exact path='/about' component={About} />
-                                <Route exact path='/status' render={() => (
-                                    <UserStatus
+                                <Route exact path='/profile' render={() => (
+                                    <UserProfile
                                         isAuthenticated={ this.state.isAuthenticated }
                                     />
                                 )} />
