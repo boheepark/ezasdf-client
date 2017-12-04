@@ -1,5 +1,5 @@
 import React from 'react'
-import {Table} from 'react-bootstrap'
+import { Table } from 'react-bootstrap'
 
 const UsersList = props => {
     return (
@@ -19,11 +19,11 @@ const UsersList = props => {
                     {
                         props.users.map((user) => {
                             return (
-                                <tr key={user.id}>
-                                    <td>{user.id}</td>
-                                    <td>{user.username}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.created_at}</td>
+                                <tr key={ user.id }>
+                                    <td>{ user.id }</td>
+                                    <td>{ user.username }</td>
+                                    <td>{ user.email }</td>
+                                    <td>{ user.created_at }</td>
                                 </tr>
                             )
                         })

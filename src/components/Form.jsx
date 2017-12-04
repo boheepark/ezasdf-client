@@ -1,5 +1,5 @@
 import React from 'react'
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 const Form = (props) => {
     if (props.isAuthenticated) {
@@ -7,9 +7,9 @@ const Form = (props) => {
     }
     return (
         <div>
-            <h1>{props.formType}</h1>
+            <h1>{ props.formType }</h1>
             <hr/><br/>
-            <form onSubmit={(event) => props.handleUserFormSubmit(event)}>
+            <form onSubmit={ (event) => props.handleUserFormSubmit(event) }>
                 <div className="form-group">
                     <input
                         name="username"
@@ -17,8 +17,8 @@ const Form = (props) => {
                         type="text"
                         placeholder="Enter a username"
                         required
-                        value={props.formData.username}
-                        onChange={props.handleFormChange}
+                        value={ props.formData.username }
+                        onChange={ props.handleFormChange }
                     />
                 </div>
                 {
@@ -30,8 +30,8 @@ const Form = (props) => {
                             type="email"
                             placeholder="Enter an email address"
                             required
-                            value={props.formData.email}
-                            onChange={props.handleFormChange}
+                            value={ props.formData.email }
+                            onChange={ props.handleFormChange }
                         />
                     </div>
                 }
@@ -42,8 +42,8 @@ const Form = (props) => {
                         type="password"
                         placeholder="Enter a password"
                         required
-                        value={props.formData.password}
-                        onChange={props.handleFormChange}
+                        value={ props.formData.password }
+                        onChange={ props.handleFormChange }
                     />
                 </div>
                 <input

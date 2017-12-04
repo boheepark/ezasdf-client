@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 class UserStatus extends Component {
@@ -49,10 +49,10 @@ class UserStatus extends Component {
         return (
             <div>
                 <ul>
-                    <li><strong>User ID:</strong> {this.state.id}</li>
-                    <li><strong>Email:</strong> {this.state.email}</li>
-                    <li><strong>Username:</strong> {this.state.username}</li>
-                    <li><strong>Created at:</strong> {this.state.created_at}</li>
+                    <li><strong>User ID:</strong> { this.state.id }</li>
+                    <li><strong>Email:</strong> { this.state.email }</li>
+                    <li><strong>Username:</strong> { this.state.username }</li>
+                    <li><strong>Created at:</strong> { this.state.created_at }</li>
                 </ul>
             </div>
         )

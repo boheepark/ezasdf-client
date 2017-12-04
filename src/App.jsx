@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Route, Switch} from 'react-router-dom'
+import React, { Component } from 'react'
+import { Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 import UsersList from './components/UsersList'
 import About from './components/About'
@@ -34,7 +34,7 @@ class App extends Component {
     getUsers() {
         axios.get(`${process.env.REACT_APP_USERS_SERVICE_URL}/users`)
             .then((res) => {
-                this.setState({users: res.data.data.users});
+                this.setState({ users: res.data.data.users });
             })
             .catch((err) => {
                 console.log(err);
@@ -120,7 +120,7 @@ class App extends Component {
             <div>
                 <NavBar
                     title={this.state.title}
-                    isAuthenticated={this.state.isAuthenticated}
+                    isAuthenticated={ this.state.isAuthenticated }
                 />
                 <div className="container">
                     <div className="row">
@@ -129,37 +129,37 @@ class App extends Component {
                             <Switch>
                                 <Route exact path='/' render={() => (
                                     <UsersList
-                                        users={this.state.users}
+                                        users={ this.state.users }
                                     />
                                 )} />
                                 <Route exact path='/about' component={About} />
                                 <Route exact path='/status' render={() => (
                                     <UserStatus
-                                        isAuthenticated={this.state.isAuthenticated}
+                                        isAuthenticated={ this.state.isAuthenticated }
                                     />
                                 )} />
                                 <Route exact path='/signup' render={() => (
                                     <Form
-                                        formType={'Signup'}
-                                        formData={this.state.formData}
-                                        handleFormChange={this.handleFormChange.bind(this)}
-                                        handleUserFormSubmit={this.handleUserFormSubmit.bind(this)}
-                                        isAuthenticated={this.state.isAuthenticated}
+                                        formType={ 'Signup' }
+                                        formData={ this.state.formData }
+                                        handleFormChange={ this.handleFormChange.bind(this) }
+                                        handleUserFormSubmit={ this.handleUserFormSubmit.bind(this) }
+                                        isAuthenticated={ this.state.isAuthenticated }
                                     />
                                 )} />
                                 <Route exact path='/signin' render={() => (
                                     <Form
-                                        formType={'Signin'}
-                                        formData={this.state.formData}
-                                        handleFormChange={this.handleFormChange.bind(this)}
-                                        handleUserFormSubmit={this.handleUserFormSubmit.bind(this)}
-                                        isAuthenticated={this.state.isAuthenticated}
+                                        formType={ 'Signin' }
+                                        formData={ this.state.formData }
+                                        handleFormChange={ this.handleFormChange.bind(this) }
+                                        handleUserFormSubmit={ this.handleUserFormSubmit.bind(this) }
+                                        isAuthenticated={ this.state.isAuthenticated }
                                     />
                                 )} />
                                 <Route exact path='/logout' render={() => (
                                     <Logout
-                                        logoutUser={this.logoutUser.bind(this)}
-                                        isAuthenticated={this.state.isAuthenticated}
+                                        logoutUser={ this.logoutUser.bind(this) }
+                                        isAuthenticated={ this.state.isAuthenticated }
                                     />
                                 )} />
                             </Switch>
