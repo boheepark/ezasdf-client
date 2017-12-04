@@ -22,7 +22,7 @@ class UserStatus extends Component {
 
     getUserStatus() {
         return axios({
-            url: `${process.env.REACT_APP_USERS_SERVICE_URL}/auth/status`,
+            url: `${process.env.REACT_APP_USERS_SERVICE_URL}/auth/profile`,
             method: 'get',
             headers: {
                 'Content-Type': 'application/json',
