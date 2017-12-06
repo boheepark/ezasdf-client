@@ -58,6 +58,16 @@ class App extends Component {
             messageText: text,
             messageType: type
         });
+        setTimeout(() => {
+            this.removeMessage();
+        }, 3000);
+    }
+
+    removeMessage() {
+        this.setState({
+            messageText: null,
+            messageType: null
+        });
     }
 
     componentWillMount() {
@@ -85,6 +95,7 @@ class App extends Component {
                         <Message
                             messageText={this.state.messageText}
                             messageType={this.state.messageType}
+                            removeMessage={this.removeMessage.bind(this)}
                         />
                     }
                     <div className="row">
