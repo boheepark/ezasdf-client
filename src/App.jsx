@@ -8,6 +8,7 @@ import NavBar from './components/NavBar';
 import Form from './components/Form';
 import Signout from './components/Signout';
 import UserProfile from './components/UserProfile';
+import Message from './components/Message'
 
 
 class App extends Component {
@@ -17,20 +18,10 @@ class App extends Component {
         this.state = {
             users: [],
             title: 'ezasdf',
-            isAuthenticated: false
+            isAuthenticated: false,
+            messageText: null,
+            messageType: null
         };
-    }
-
-    componentWillMount() {
-        if (window.localStorage.getItem('token')) {
-            this.setState({
-                isAuthenticated: true
-            });
-        }
-    }
-
-    componentDidMount() {
-        this.getUsers();
     }
 
     getUsers() {
@@ -59,6 +50,26 @@ class App extends Component {
             isAuthenticated: true
         });
         this.getUsers();
+        this.createMessage('Welcome!');
+    }
+
+    createMessage(text='Sanity Check', type='success') {
+        this.setState({
+            messageText: text,
+            messageType: type
+        });
+    }
+
+    componentWillMount() {
+        if (window.localStorage.getItem('token')) {
+            this.setState({
+                isAuthenticated: true
+            });
+        }
+    }
+
+    componentDidMount() {
+        this.getUsers();
     }
 
     render() {
@@ -69,6 +80,13 @@ class App extends Component {
                     isAuthenticated={this.state.isAuthenticated}
                 />
                 <div className="container">
+                    {
+                        this.state.messageText && this.state.messageType &&
+                        <Message
+                            messageText={this.state.messageText}
+                            messageType={this.state.messageType}
+                        />
+                    }
                     <div className="row">
                         <div className="col-md-6">
                             <br/>
@@ -84,6 +102,7 @@ class App extends Component {
                                         formType={'signup'}
                                         isAuthenticated={this.state.isAuthenticated}
                                         signinUser={this.signinUser.bind(this)}
+                                        createMessage={this.createMessage.bind(this)}
                                     />
                                 )}/>
                                 <Route exact path='/signin' render={() => (
@@ -91,6 +110,7 @@ class App extends Component {
                                         formType={'signin'}
                                         isAuthenticated={this.state.isAuthenticated}
                                         signinUser={this.signinUser.bind(this)}
+                                        createMessage={this.createMessage.bind(this)}
                                     />
                                 )}/>
                                 <Route exact path='/signout' render={() => (

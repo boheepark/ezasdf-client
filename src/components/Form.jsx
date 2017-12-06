@@ -115,17 +115,6 @@ class Form extends Component {
         }
     }
 
-    componentDidMount() {
-        this.clearForm();
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (this.props.formType !== nextProps.formType) {
-            this.clearForm();
-            this.initRules();
-        }
-    }
-
     handleFormChange(event) {
         const obj = this.state.formData;
         obj[event.target.name] = event.target.value;
@@ -158,7 +147,24 @@ class Form extends Component {
             })
             .catch((err) => {
                 console.log(err);
+                if(formType === 'signin') {
+                    this.props.createMessage('Signin failed.', 'danger');
+                }
+                if(formType === 'signup') {
+                    this.props.createMessage('That user already exists.', 'danger');
+                }
             });
+    }
+
+    componentDidMount() {
+        this.clearForm();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.formType !== nextProps.formType) {
+            this.clearForm();
+            this.initRules();
+        }
     }
 
     render() {
