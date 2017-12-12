@@ -22,6 +22,7 @@
     "start": "PORT=9000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "cov": "react-scripts test --coverage",
     "eject": "react-scripts eject"
   }
 }

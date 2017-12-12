@@ -23,7 +23,7 @@ test('UserList renders properly', () => {
     const table = wrapper.find('Table');
     expect(table.length).toBe(1);
 
-    // expect(element.get(0).props.className).toBe('well');
+    // expect(table.find('tr').get(1).find('td').get(0).props.children).toBe('well');
     // expect(element.get(1).props.children.).toBe('test');
 });
 
