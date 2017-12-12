@@ -1,7 +1,7 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
 
-const UsersList = props => {
+const UserList = props => {
     return (
         <div>
             <h1>All Users</h1>
@@ -35,4 +35,4 @@ const UsersList = props => {
     );
 };
 
-export default UsersList;
+export default UserList;
